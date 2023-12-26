@@ -3,6 +3,9 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 header {
@@ -23,6 +26,10 @@ nav a {
     color: #fff;
     text-decoration: none;
     margin: 0 10px;
+}
+
+main {
+    flex: 1 0 auto;
 }
 
 section {
@@ -70,26 +77,53 @@ form button:hover {
     background: #555;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-table, th, td {
-    border: 1px solid #ddd;
-    padding: 12px;
-    text-align: left;
-}
-
-th {
-    background-color: #444;
-    color: #fff;
-}
 
 footer {
+    flex-shrink: 0;
     background-color: #333;
     color: #fff;
     padding: 10px;
     text-align: center;
+}
+
+.instruction-text {
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: background 0.3s;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+.centered-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.animated-welcome {
+    animation: welcome-animation 2s infinite;
+}
+
+@keyframes welcome-animation {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
 }
