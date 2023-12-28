@@ -32,7 +32,7 @@ if (isset($_SESSION['admin_email']) && isset($_SESSION['admin_office'])) {
     </header>
 
     <section class="centered-section">
-       <a href="admin_page.php" class="button">Add a Car</a> 
+       <a href="../Add Car Page/addCar.php" class="button">Add a Car</a> 
         <a href="admin_page.php" class="button">Delete a Car</a>
         <a href="admin_page.php" class="button">View Car Status</a>
         <a href="admin_page.php" class="button">View Reservations</a>
