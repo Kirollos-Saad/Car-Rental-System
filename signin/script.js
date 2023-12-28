@@ -21,3 +21,9 @@ function validate() {
 
     return true
 }
+window.onload = function() {
+    var urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('signup') === 'success') {
+        alert('User signed up successfully.');
+    }
+}

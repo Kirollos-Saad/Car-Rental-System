@@ -1,6 +1,11 @@
 document.getElementById('signup-form').addEventListener('submit', function(event) {
     event.preventDefault();
+    if (validateSignup()) {        
+        this.submit();
+    } 
+});
 
+function validateSignup() {
     var username = document.getElementById('signup-username').value;
     var email = document.getElementById('signup-email').value;
     var phone = document.getElementById('signup-phone').value;
@@ -11,38 +16,38 @@ document.getElementById('signup-form').addEventListener('submit', function(event
 
     if (!username) {
         alert('Please enter your name.');
-        return;
+        return false;
     }
 
     if (!email) {
         alert('Please enter your email.');
-        return;
+        return false;
     }
 
     if (!phone) {
         alert('Please enter your phone number.');
-        return;
+        return false;
     }
 
     if (!country) {
         alert('Please enter your country.');
-        return;
+        return false;
     }
 
     if (!city) {
         alert('Please enter your city.');
-        return;
+        return false;
     }
 
     if (!password) {
         alert('Please enter your password.');
-        return;
+        return false;
     }
 
     if (password !== confirmPassword) {
         alert('Passwords do not match.');
-        return;
+        return false;
     }
 
-    alert('User signed up successfully.');
-});
+    return true;
+}

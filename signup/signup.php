@@ -21,6 +21,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO Customer (customer_name, email, phone, country, city, password_hash) VALUES ('$username', '$email', '$phone', '$country', '$city', '$password')";
     if ($conn->query($sql) === TRUE) {
         echo "User signed up successfully.";
+        header("Location: ../signin/signin.html?signup=success"); // Redirect user to signin.html
+        exit;
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
