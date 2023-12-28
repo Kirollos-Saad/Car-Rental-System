@@ -54,7 +54,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
  <main>
     <header>
-        <h1>Enter Car Specifications:</h1>
+        <h1>Car Rental System</h1>
+        <h2>Enter Car Specifications:</h2>
     </header>
 
     <form id="addcar-form">
