@@ -1,5 +1,5 @@
 <?php
-$servername = "localhost:3066";
+$servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "car_rental_system";
