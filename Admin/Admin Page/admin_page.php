@@ -27,6 +27,7 @@ if (isset($_SESSION['admin_email']) && isset($_SESSION['admin_office'])) {
 <body>
  <main>
     <header>
+        <h1>Car Rental System</h1>
         <h1>Office:</h1>
         <h2><?php echo "$office_country, $office_city"; ?></h2>
     </header>
