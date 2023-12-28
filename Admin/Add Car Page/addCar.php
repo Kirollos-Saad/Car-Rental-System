@@ -1,10 +1,17 @@
 <?php
-session_start(); // Start the session
 include '../../db_connect.php'; // Include the database connection file
 
-//ini_set('display_errors', 1);
-//ini_set('display_startup_errors', 1);
-//error_reporting(E_ALL);
+// Fetch office IDs
+$office_ids = [];
+$sql = "SELECT office_id FROM Office";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+    // Output data of each row
+    while($row = $result->fetch_assoc()) {
+        $office_ids[] = $row["office_id"];
+    }
+}
+
 // Retrieve data from the form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $platenumber = $_POST['car-plate-number'];
@@ -16,33 +23,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $year_produced = $_POST['car-year-produced'];
     $status = $_POST['car-status'];
     $office_id = $_POST['office-id'];
-
-
-    if (strtolower($transmission) !== "automaitc" || strtolower($transmission) !== "Manual" ) {
-        echo "Transmission type must be either automatic or manual!";
-        return;
-    }
-
-    if (strtolower($status) !== "active" || strtolower($status) !== "out of serive" || strtolower($status) !== "rented" ) {
-        echo "Car Status must be either active or out of service or rented !";
-        return;
-    }
-    
+    $image_path = $_POST['car-image-path'];
 
     $sql = "INSERT INTO Car (plate_number, color, is_automatic, price_per_day, model_name, manufacturer,year_produced,car_status,date_deleted,office_id,image_path)
-     VALUES ('$platenumber', '$color', '$transmission', '$price_per_day', '$model_name', '$manufacturer','$year_produced','$status','NULL','$office_id','NULL')";
+     VALUES                 ('$platenumber', '$color', '$transmission', '$price_per_day', '$model_name', '$manufacturer','$year_produced','$status',NULL,'$office_id','$image_path')";
     if ($conn->query($sql) === TRUE) {
         echo "The car is inserted successfully.";
-        header("Location: ../Admin Page/admin_page.php");
+       // header("Location: ../Admin Page/admin_page.php");
         exit;
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
 }
-    //header("Location: admin_page.php");
-    //exit();
-    $conn->close(); // Close the database connection
+
+$conn->close(); // Close the database connection
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,9 +54,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <h2>Enter Car Specifications:</h2>
     </header>
 
-    <form id="addcar-form">
+    <form id="addcar-form" method="post">
             <label for="car-plate-number">Plate Number:</label>
-            <input type="text" id="car-plate-number" name="signin-car-plate-number" required>
+            <input type="text" id="car-plate-number" name="car-plate-number" required>
 
             <label for="car-color">Color:</label>
             <input type="text" id="car-color" name= "car-color" required>
@@ -85,18 +81,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="text" id="car-year-produced" name= "car-year-produced" required>
 
             <label for="car-status">Car Status:</label>
-            <select id="car-status" name="car-status" required>
-            <option value=""></option>
+        <select id="car-status" name="car-status" required>
             <option value="Active">Active</option>
-            <option value="Out of service">Out of service</option>
-            <option value="Rented">Rented</option>
-        </select>
+         </select>
+       
+    <label for="car-office-id">Office Id:</label>
+    <select id="car-office-id" name="office-id" required>
+    <option value="">office_Id</option>
+    <?php
+    foreach ($office_ids as $office_id) {
+        echo "<option value='" . $office_id . "'>" . $office_id . "</option>";
+    }
+    ?>
+    </select>
 
-            <label for="car-office-id">Office Id:</label>
-            <input type="text" id="car-office-id" name= "car-office-id" required>
-
-            <label for="car-image-path">Car Image Path:</label>
-            <input type="text" id="car-image-path" name= "car-image-path" required>
+         <label for="car-image-path">Car Image Path:</label>
+            <input type="text" id="car-image-path" name= "car-image-path" required> 
 
             <button type="submit">Add Car</button>
         </form>
@@ -107,3 +107,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 </body>
 </html>
+<?php
