@@ -14,8 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Fetch user data
         $userData = $result->fetch_assoc();
 
-        // Store user data in session variables
-        $_SESSION['user_id'] = $userData['customer_id'];
+        // Store user data in session variables        
         $_SESSION['user_email'] = $userData['email'];
         $_SESSION['user_name'] = $userData['customer_name'];
 
