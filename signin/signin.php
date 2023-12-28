@@ -11,9 +11,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {    
-        echo "Login successful!";
+        header("Location: ../Account/account.html");
+        exit();
     } else {    
-        echo "Invalid email or password!";
+        header("Location: signin.html?login=failed");
+        exit();
     }
 }
 
