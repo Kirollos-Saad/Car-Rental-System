@@ -1,10 +1,92 @@
-label {
-    display: inline-block;
-    margin-bottom: 5px; 
+/* Set the default font, margin, padding, and background for the body */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+    min-height: 100vh;
 }
 
-select {
-    display: inline-block;
-    margin-bottom: 30px;
-    margin-right: 30px; 
+/* Style for the header */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+/* Style for the main content */
+main {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    width: 100%;
+    max-width: 800px; /* Limit main content width */
+}
+
+/* Style for the form */
+form {
+    margin: 20px; /* Adds space around the form */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 400px; /* Limit form width */
+}
+
+/* Style for form labels */
+form label {
+    display: block;
+    margin: 10px 0;
+    font-weight: bold;
+    width: 100%;
+}
+
+/* Style for form inputs */
+form input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Style for form buttons */
+form button {
+    background: #333;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: background 0.3s;
+    margin-top: 10px;
+}
+
+/* Style for form button hover */
+form button:hover {
+    background: #555;
+}
+
+/* Style for the footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
 }
