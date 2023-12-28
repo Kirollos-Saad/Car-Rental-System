@@ -1,6 +1,6 @@
 <?php
 session_start(); // Start the session
-include '../db_connect.php'; // Include the database connection file
+include '../../db_connect.php'; // Include the database connection file
 
 // Check if user data exists in the session
 if (isset($_SESSION['admin_email']) && isset($_SESSION['admin_office'])) {
