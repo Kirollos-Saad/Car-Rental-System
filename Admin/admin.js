@@ -1,9 +1,7 @@
 document.getElementById('admin-form').addEventListener('submit', function(event) {
     event.preventDefault();
     if (validate()) {        
-        alert('Admin signed in successfully.');
         this.submit();
-        
     } 
 });
 
