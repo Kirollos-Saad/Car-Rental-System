@@ -9,10 +9,10 @@ body {
 }
 
 header {
-    background-color: #340303;
+    background-color: #333;
     color: #fff;
     padding: 20px;
-    text-align: left;
+    text-align: center;
 }
 
 main {
@@ -31,7 +31,7 @@ main {
     display: inline-block;
     padding: 10px 20px;
     margin: 10px;
-    background-color: #ff1100;
+    background-color: #333 ;
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
@@ -40,12 +40,12 @@ main {
 }
 
 .button:hover {
-    background-color: #333;
+    background-color:#0056b3;
 }
 
 footer {
     flex-shrink: 0;
-    background-color: #340303;
+    background-color: #333;
     color: #fff;
     padding: 10px;
     text-align: center;

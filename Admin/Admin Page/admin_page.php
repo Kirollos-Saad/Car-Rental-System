@@ -1,6 +1,6 @@
 <?php
 session_start(); // Start the session
-include '../db_connect.php'; // Include the database connection file
+include '../../db_connect.php'; // Include the database connection file
 
 // Check if user data exists in the session
 if (isset($_SESSION['admin_email']) && isset($_SESSION['admin_office'])) {
@@ -27,12 +27,13 @@ if (isset($_SESSION['admin_email']) && isset($_SESSION['admin_office'])) {
 <body>
  <main>
     <header>
+        <h1>Car Rental System</h1>
         <h1>Office:</h1>
         <h2><?php echo "$office_country, $office_city"; ?></h2>
     </header>
 
     <section class="centered-section">
-       <a href="admin_page.php" class="button">Add a Car</a> 
+       <a href="../Add Car Page/addCar.php" class="button">Add a Car</a> 
         <a href="admin_page.php" class="button">Delete a Car</a>
         <a href="admin_page.php" class="button">View Car Status</a>
         <a href="admin_page.php" class="button">View Reservations</a>

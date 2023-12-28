@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['admin_email'] = $adminData['email'];
         $_SESSION['admin_office'] = $adminData['office_id'];
 
-        header("Location: ../Admin Page/admin_page.php");
+        header("Location: Admin Page/admin_page.php");
         //exit();
     } else {
         header("Location: admin.html?login=failed");
