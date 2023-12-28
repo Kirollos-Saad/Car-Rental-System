@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $whereClause = 'WHERE ' . implode(' AND ', $conditions);
     }
 
-    $sql = "SELECT * FROM Car $whereClause";
+    $sql = "SELECT * FROM Car $whereClause AND car_status = 'Active'";
     $result = $conn->query($sql);
 
 }
