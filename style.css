@@ -28,7 +28,9 @@ nav a {
     margin: 0 10px;
 }
 
-
+main {
+    flex: 1 0 auto;
+}
 
 section {
     padding: 20px;
