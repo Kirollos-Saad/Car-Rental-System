@@ -1,8 +1,23 @@
 document.getElementById('signin-form').addEventListener('submit', function(event) {
     event.preventDefault();
-
-    var username = document.getElementById('signin-username').value;
-    var password = document.getElementById('signin-password').value;
-
-    console.log('Sign in form submitted with username ' + username + ' and password ' + password);
+    if (validate()) {        
+        this.submit();
+    } 
 });
+
+function validate() {
+    var email = document.getElementById("signin-email").value;
+    if (email == "" | email == null) {
+        alert("Please enter an Email");
+        return false
+    }
+
+    var password = document.getElementById("signin-password").value;
+    if (password == "" | password == null) {
+        alert("Please enter a password");
+        return false
+
+    }
+
+    return true
+}

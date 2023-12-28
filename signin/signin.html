@@ -9,12 +9,12 @@
             <h1>Car Rental System</h1>
         </header>
 
-        <form id="signin-form">
-            <label for="signin-username">Username:</label>
-            <input type="text" id="signin-username" required>
+        <form id="signin-form" action="signin.php" method="post">
+            <label for="signin-email">Email:</label>
+            <input type="text" id="signin-email" name="signin-email" required>
 
             <label for="signin-password">Password:</label>
-            <input type="password" id="signin-password" required>
+            <input type="password" id="signin-password" name= "signin-password" required>
 
             <button type="submit">Sign In</button>
         </form>
