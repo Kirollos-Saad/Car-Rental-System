@@ -65,8 +65,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <label for="car-color">Color:</label>
             <input type="text" id="car-color" name= "car-color" required>
 
-            <label for="car-transmission">Transmission Type(Automatic,Manual):</label>
-            <input type="text" id="car-transmission" name= "car-transmission" required>
+            <label for="car-transmission">Transmission Type:</label>
+            <select id="car-transmission" name="car-transmission" required>
+            <option value=""></option>
+            <option value="Automatic">Automatic</option>
+            <option value="Manual">Manual</option>
+            </select>
 
             <label for="car-price-per-day">Price per day:</label>
             <input type="text" id="car-price-per-day" name= "car-price-per-day" required>
@@ -80,8 +84,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <label for="car-year-produced">Year Produced:</label>
             <input type="text" id="car-year-produced" name= "car-year-produced" required>
 
-            <label for="car-status">Car Status(Active, Out of serive, rented):</label>
-            <input type="text" id="car-status" name= "car-status" required>
+            <label for="car-status">Car Status:</label>
+            <select id="car-status" name="car-status" required>
+            <option value=""></option>
+            <option value="Active">Active</option>
+            <option value="Out of service">Out of service</option>
+            <option value="Rented">Rented</option>
+        </select>
 
             <label for="car-office-id">Office Id:</label>
             <input type="text" id="car-office-id" name= "car-office-id" required>
