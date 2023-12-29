@@ -30,7 +30,10 @@ if (isset($_GET['plate_number'])) {
 ?>
 
 
+
 <!DOCTYPE html>
+
+
 <html lang="en">
 
 <head>
@@ -38,6 +41,40 @@ if (isset($_GET['plate_number'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rent Car Details</title>
     <link rel="stylesheet" href="rent_car.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var rentDaysInput = document.getElementById('rent_days');
+            var totalPriceDisplay = document.getElementById('total_price');
+            var totalPriceInput = document.getElementById('total_price_input');
+            var pricePerDay = <?php echo $car['price_per_day']; ?>;
+            var paymentForm = document.getElementById('payment_form');
+            var confirmPaymentBtn = document.getElementById('confirm_payment');
+
+            rentDaysInput.addEventListener('input', function () {
+                var numberOfDays = parseInt(rentDaysInput.value);
+                var totalPrice = isNaN(numberOfDays) ? 0 : numberOfDays * pricePerDay;
+                totalPriceDisplay.textContent = '$' + totalPrice.toFixed(2);
+                totalPriceInput.value = totalPrice.toFixed(2);
+            });
+
+            confirmPaymentBtn.addEventListener('click', function () {
+                var cardDetailsInput = document.getElementById('card-details');
+                var cardDetails = cardDetailsInput.value.trim();
+                var numberOfDays = parseInt(rentDaysInput.value);
+                if (numberOfDays <= 0 || isNaN(numberOfDays)) {
+                    alert("Please Enter a Non-zero Number of Days");
+                    return;
+                }
+                if (!cardDetails) {
+                    alert("Please Enter valid card details");
+                    return;
+                }
+
+                paymentForm.submit();
+            });
+        });
+
+    </script>
 </head>
 
 <body>
@@ -46,6 +83,38 @@ if (isset($_GET['plate_number'])) {
         <h2>Rent Car</h2>
     </header>
     <main>
+
+        <div class="purchase_area">
+            <form id="payment_form" action="pay.php" method="post">
+                <div>
+                    <label for="rent_days">Number of Days:</label>
+                    <input type="number" id="rent_days" name="rent_days" placeholder="Enter number of days" required
+                        min="0">
+
+                    <label for="payment_options">Payment Options:</label>
+                    <select id="payment_options" name="payment_options">
+                        <option value='Visa'>Visa</option>
+                        <option value="Mastercard">Mastercard</option>
+                        <option value="PayPal">PayPal</option>
+                        <option value="Cash">Cash</option>
+                    </select>
+                    <input type="hidden" id="plate_number" name="plate_number"
+                        value="<?php echo $car['plate_number']; ?>">
+                    <input type="hidden" id="total_price_input" name="total_price_input" value=0>
+
+                    <p>Total Price: <span id="total_price" name="total_price">$0.00</span></p>
+
+                    <label for="card-details">Enter Card Details:</label>
+                    <input type="password" value="" id="card-details" name="card-details"
+                        placeholder="Enter Card Details" required>
+
+
+                    <button id="confirm_payment" type="button">Confirm Payment</button>
+                </div>
+            </form>
+        </div>
+
+
         <div class="carDetails">
             <div class="car-card">
                 <div class="image-container">
