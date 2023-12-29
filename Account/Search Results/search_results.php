@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     }
 
     $sql = "SELECT * FROM Car $whereClause AND car_status = 'Active'";
-    $result = $conn->query($sql);
+    $cars = $conn->query($sql);
 
 }
 ?>
@@ -57,6 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Display Results</title>
+    <link rel="stylesheet" href="search_results.css">
 </head>
 
 <body>
@@ -66,33 +67,27 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     <p>
         <?php
 
-        if ($result->num_rows == 0) {
+        if ($cars->num_rows == 0) {
             echo "No Results Found";
         }
         ?>
     </p>
 
 
-    <script>
-        // PHP array to JavaScript object conversion
-        const cars = <?php
-        if ($result && $result->num_rows > 0) {
-            $data = array();
-            while ($row = $result->fetch_assoc()) {
-                $data[] = $row;
-            }
-            echo json_encode($data);
-        }
-        ?>;
-
-        // Displaying the car details as JavaScript objects
-        const carDetailsContainer = document.getElementById('carDetails');
-        cars.forEach(car => {
-            const carDetails = document.createElement('div');
-            carDetails.textContent = JSON.stringify(car);
-            carDetailsContainer.appendChild(carDetails);
-        });
-    </script>
+    <div class="cars-grid">
+    <?php foreach ($cars as $car): ?>
+        <div class="car-card">
+            <img src="<?php echo $car['image_path']; ?>" alt="Car Image">
+            <p><strong>Plate Number:</strong> <span><?php echo $car['plate_number']; ?></span></p>
+            <p><strong>Model Name:</strong> <span><?php echo $car['model_name']; ?></span></p>
+            <p><strong>Manufacturer:</strong> <span><?php echo $car['manufacturer']; ?></span></p>
+            <p><strong>Year:</strong> <span><?php echo $car['year_produced']; ?></span></p>
+            <p><strong>Color:</strong> <span style="background-color: <?php echo $car['color']; ?>; display: inline-block; width: 20px; height: 20px;"></span> <span><?php echo $car['color']; ?></span></p>
+            <p><strong>Transmission:</strong> <span><?php echo $car['is_automatic'] ? 'Automatic' : 'Manual'; ?></span></p>
+            <p><strong>Price per day:</strong> <span><?php echo $car['price_per_day']; ?></span></p>
+        </div>
+    <?php endforeach; ?>
+</div>
 
 
 
