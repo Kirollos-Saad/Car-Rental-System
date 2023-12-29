@@ -35,10 +35,10 @@ main {
     border: 1px solid #ccc;
     border-radius: 10px;
     padding: 20px;
-    text-align: left; /* Align text to the left */
-    margin: 20px; /* Adjust margin */
-    max-width: 600px; /* Limit the width of the card */
-    width: calc(100% - 40px); /* Calculate width to accommodate margins */
+    text-align: left; 
+    margin: 20px; 
+    max-width: 600px; 
+    width: calc(100% - 40px); 
 }
 
 .main-container {
