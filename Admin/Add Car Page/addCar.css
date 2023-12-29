@@ -66,7 +66,7 @@ select#car-transmission {
     border-radius: 5px;
     font-size: 16px;
     background-color: #fff;
-    appearance: none; /* Remove default appearance */
+    appearance: none; /* Remove default appearance to appear normal instead of link appearance */
 }
 
 select#car-status {
@@ -77,7 +77,7 @@ select#car-status {
     border-radius: 5px;
     font-size: 16px;
     background-color: #fff;
-    appearance: none; /* Remove default appearance */
+    appearance: none; /* Remove default appearance to appear normal instead of link appearance */
 }
 
 select#car-office-id {
@@ -88,7 +88,7 @@ select#car-office-id {
     border-radius: 5px;
     font-size: 16px;
     background-color: #fff;
-    appearance: none; /* Remove default appearance */
+    appearance: none; /* Remove default appearance to appear normal instead of link appearance */
 }
 
 footer {
