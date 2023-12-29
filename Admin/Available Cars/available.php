@@ -31,7 +31,6 @@ if ($result->num_rows > 0) {
     <div class="cars-grid">
     <?php foreach ($cars as $car): ?>
         <div class="car-card">
-            <!-- <img src="../../Car_images/1.jpg" alt="Car Image"> -->
             <img src="<?php echo $car['image_path']; ?>" alt="Car Image">
             <p><strong>Plate Number:</strong> <span><?php echo $car['plate_number']; ?></span></p>
             <p><strong>Model Name:</strong> <span><?php echo $car['model_name']; ?></span></p>
