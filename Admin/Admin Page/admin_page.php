@@ -34,7 +34,7 @@ if (isset($_SESSION['admin_email']) && isset($_SESSION['admin_office'])) {
 
     <section class="centered-section">
        <a href="../Add Car Page/addCar.php" class="button">Add a Car</a> 
-        <a href="admin_page.php" class="button">Delete a Car</a>
+        <a href="../Delete Car Page/deleteCar.php" class="button">Delete a Car</a>
         <a href="admin_page.php" class="button">View Car Status</a>
         <a href="admin_page.php" class="button">View Reservations</a>
         <a href="admin_page.php" class="button">View Customer</a>

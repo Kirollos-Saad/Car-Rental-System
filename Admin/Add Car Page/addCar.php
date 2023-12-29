@@ -25,6 +25,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $office_id = $_POST['office-id'];
     $image_path = $_POST['car-image-path'];
 
+    $getDuplicate = "SELECT * FROM car where plate_number = '$platenumber' ";
+    $check = $conn->query($getDuplicate);
+    if ($check->num_rows !== 0){
+        echo '<script type="text/javascript"> confirm("Plate Numbers cannot be Duplicated!");
+                window.location.href = "addCar.php";
+              </script>';
+    }
     $sql = "INSERT INTO Car (plate_number, color, is_automatic, price_per_day, model_name, manufacturer,year_produced,car_status,date_deleted,office_id,image_path)
      VALUES                 ('$platenumber', '$color', '$transmission', '$price_per_day', '$model_name', '$manufacturer','$year_produced','$status',NULL,'$office_id','$image_path')";
     if ($conn->query($sql) === TRUE) {
