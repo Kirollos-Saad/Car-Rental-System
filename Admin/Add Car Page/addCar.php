@@ -16,7 +16,13 @@ if ($result->num_rows > 0) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $platenumber = $_POST['car-plate-number'];
     $color = $_POST['car-color'];
-    $transmission = $_POST['car-transmission'];
+    $transmission_type = $_POST['car-transmission'];
+    if ($transmission_type == "Automatic") {
+        $is_automatic = 1;
+    } else {
+        $is_automatic = 0;
+    }
+
     $price_per_day = $_POST['car-price-per-day'];
     $model_name = $_POST['car-model-name'];
     $manufacturer = $_POST['car-manufacturer'];
@@ -33,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               </script>';
     }
     $sql = "INSERT INTO Car (plate_number, color, is_automatic, price_per_day, model_name, manufacturer,year_produced,car_status,date_deleted,office_id,image_path)
-     VALUES                 ('$platenumber', '$color', '$transmission', '$price_per_day', '$model_name', '$manufacturer','$year_produced','$status',NULL,'$office_id','$image_path')";
+     VALUES                 ('$platenumber', '$color', '$is_automatic', '$price_per_day', '$model_name', '$manufacturer','$year_produced','$status',NULL,'$office_id','$image_path')";
     if ($conn->query($sql) === TRUE) {
         //echo "The car is inserted successfully.";
        header("Location: ../Available Cars/available.php");

@@ -21,8 +21,8 @@ include '../../db_connect.php'; // Include the database connection file
 
         <form action="../Search Results/search_results.php" method="GET">
         <label for="car-transmission">Transmission Type:</label>
-<select id="car-transmission" name="Manual/Auto" required>
-    <option value="any">Any</option>
+<select id="car-transmission" name="Manual/Auto" >
+    <option value="">Any</option>
     <option value="manual">Manual</option>
     <option value="auto">Automatic</option>
 </select>
