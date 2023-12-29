@@ -10,6 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "SELECT customer_id FROM Customer where email = '$userEmail'";
     $customer = $conn->query($sql)->fetch_assoc();
     $customer_id = $customer['customer_id'];
+    date_default_timezone_set('UTC');
     $currentTimestamp = date("Y-m-d H:i:s"); 
 
     $sql = "INSERT INTO Payment (amount, payment_type, payment_date, number_of_days, plate_number, customer_id)
