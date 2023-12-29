@@ -20,14 +20,12 @@ include '../../db_connect.php'; // Include the database connection file
         </header>
 
         <form action="../Search Results/search_results.php" method="GET">
-            <input type="radio" id="option1" name="Manual/Auto" value="manual">
-            <label for="option1">Manual</label>
-
-            <input type="radio" id="option2" name="Manual/Auto" value="auto">
-            <label for="option2">Automatic</label>
-
-            <input type="radio" id="option3" name="Manual/Auto" value="" checked>
-            <label for="option3">Any</label>
+        <label for="car-transmission">Transmission Type:</label>
+<select id="car-transmission" name="Manual/Auto" required>
+    <option value="any">Any</option>
+    <option value="manual">Manual</option>
+    <option value="auto">Automatic</option>
+</select>
             
 
             <label for="colors">Available Colors:</label>

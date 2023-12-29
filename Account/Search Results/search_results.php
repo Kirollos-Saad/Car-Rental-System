@@ -79,22 +79,22 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     </p>
 
 
-<div class="cars-grid">
+    <div class="cars-grid">
     <?php foreach ($cars as $car): ?>
-        <a href="rent_car.php?plate_number=<?php echo $car['plate_number']; ?>" class="car-link">
         <div class="car-card">
-            <img src="<?php echo $car['image_path']; ?>" alt="Car Image">
-            <p><strong>Plate Number:</strong> <span><?php echo $car['plate_number']; ?></span></p>
-            <p><strong>Model Name:</strong> <span><?php echo $car['model_name']; ?></span></p>
-            <p><strong>Manufacturer:</strong> <span><?php echo $car['manufacturer']; ?></span></p>
-            <p><strong>Year:</strong> <span><?php echo $car['year_produced']; ?></span></p>
-            <p><strong>Color:</strong> <span style="background-color: <?php echo $car['color']; ?>; display: inline-block; width: 20px; height: 20px;"></span> <span><?php echo $car['color']; ?></span></p>
-            <p><strong>Transmission:</strong> <span><?php echo $car['is_automatic'] ? 'Automatic' : 'Manual'; ?></span></p>
-            <p><strong>Price per day:</strong> <span><?php echo '$' . $car['price_per_day']; ?></span></p>
+            <a href="rent_car.php?plate_number=<?php echo $car['plate_number']; ?>" class="car-link" style="display: block; text-decoration: none; color: inherit;">
+                <img src="<?php echo $car['image_path']; ?>" alt="Car Image">
+                <p><strong>Plate Number:</strong> <span><?php echo $car['plate_number']; ?></span></p>
+                <p><strong>Model Name:</strong> <span><?php echo $car['model_name']; ?></span></p>
+                <p><strong>Manufacturer:</strong> <span><?php echo $car['manufacturer']; ?></span></p>
+                <p><strong>Year:</strong> <span><?php echo $car['year_produced']; ?></span></p>
+                <p><strong>Color:</strong> <span style="background-color: <?php echo $car['color']; ?>; display: inline-block; width: 20px; height: 20px;"></span> <span><?php echo $car['color']; ?></span></p>
+                <p><strong>Transmission:</strong> <span><?php echo $car['is_automatic'] ? 'Automatic' : 'Manual'; ?></span></p>
+                <p><strong>Price per day:</strong> <span><?php echo '$' . $car['price_per_day']; ?></span></p>
+            </a>
         </div>
-        </a>
     <?php endforeach; ?>
-    </div>
+</div>
 </main>
     <footer>
         <p>&copy; 2023 Car Rental System</p>
