@@ -30,7 +30,10 @@ if (isset($_GET['plate_number'])) {
 ?>
 
 
+
 <!DOCTYPE html>
+
+
 <html lang="en">
 
 <head>
@@ -46,6 +49,25 @@ if (isset($_GET['plate_number'])) {
         <h2>Rent Car</h2>
     </header>
     <main>
+    
+        <div class="purchase_area">
+            <div>
+                <label for="rent_days">Number of Days:</label>
+                <input type="number" id="rent_days" name="rent_days" placeholder="Enter number of days" required>
+
+                <label for="payment_options">Payment Options:</label>
+                <select id="payment_options" name="payment_options">
+                    <option value='Visa'>Visa</option>
+                    <option value="Mastercard">Mastercard</option>
+                    <option value="PayPal">PayPal</option>
+                    <option value="Cash">Cash</option>                
+                </select>
+
+
+            </div>
+        </div>
+
+
         <div class="carDetails">
             <div class="car-card">
                 <div class="image-container">
