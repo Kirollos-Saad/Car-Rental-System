@@ -52,18 +52,23 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Display Results</title>
     <link rel="stylesheet" href="search_results.css">
 </head>
+<body>
+ <main>
+    <header>
+        <h1>Car Rental System</h1>
+        <h2>Search Results:</h2>
+    </header>
+
+
 
 <body>
-    <h1>Car Details</h1>
     <div id="carDetails"></div>
-
     <p>
         <?php
 
@@ -74,8 +79,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     </p>
 
 
-    <div class="cars-grid">
+<div class="cars-grid">
     <?php foreach ($cars as $car): ?>
+        <a href="rent_car.php?plate_number=<?php echo $car['plate_number']; ?>" class="car-link">
         <div class="car-card">
             <img src="<?php echo $car['image_path']; ?>" alt="Car Image">
             <p><strong>Plate Number:</strong> <span><?php echo $car['plate_number']; ?></span></p>
@@ -84,13 +90,15 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             <p><strong>Year:</strong> <span><?php echo $car['year_produced']; ?></span></p>
             <p><strong>Color:</strong> <span style="background-color: <?php echo $car['color']; ?>; display: inline-block; width: 20px; height: 20px;"></span> <span><?php echo $car['color']; ?></span></p>
             <p><strong>Transmission:</strong> <span><?php echo $car['is_automatic'] ? 'Automatic' : 'Manual'; ?></span></p>
-            <p><strong>Price per day:</strong> <span><?php echo $car['price_per_day']; ?></span></p>
+            <p><strong>Price per day:</strong> <span><?php echo '$' . $car['price_per_day']; ?></span></p>
         </div>
+        </a>
     <?php endforeach; ?>
-</div>
-
-
+    </div>
+</main>
+    <footer>
+        <p>&copy; 2023 Car Rental System</p>
+    </footer>
 
 </body>
-
 </html>
