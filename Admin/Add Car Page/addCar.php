@@ -35,8 +35,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO Car (plate_number, color, is_automatic, price_per_day, model_name, manufacturer,year_produced,car_status,date_deleted,office_id,image_path)
      VALUES                 ('$platenumber', '$color', '$transmission', '$price_per_day', '$model_name', '$manufacturer','$year_produced','$status',NULL,'$office_id','$image_path')";
     if ($conn->query($sql) === TRUE) {
-        echo "The car is inserted successfully.";
-       // header("Location: ../Admin Page/admin_page.php");
+        //echo "The car is inserted successfully.";
+       header("Location: ../Available Cars/available.php");
         exit;
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
