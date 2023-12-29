@@ -34,7 +34,6 @@ if ($result->num_rows > 0) {
             <p><strong>Customer Id:</strong> <span><?php echo $customer['customer_id']; ?></span></p>
             <p><strong>Email:</strong> <span><?php echo $customer['email']; ?></span></p>
             <p><strong>Phone:</strong> <span><?php echo $customer['phone']; ?></span></p>
-            <p><strong>Password Hash:</strong> <span><?php echo $customer['password_hash']; ?></span></p>
             <p><strong>Customer Name:</strong> <span><?php echo $customer['customer_name']; ?></span></p>
             <p><strong>Country:</strong> <span><?php echo $customer['country'] ?></span></p>
             <p><strong>City:</strong> <span><?php echo $customer['city']; ?></span></p>
