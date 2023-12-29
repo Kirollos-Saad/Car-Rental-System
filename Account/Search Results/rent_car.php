@@ -52,7 +52,7 @@ if (isset($_GET['plate_number'])) {
 
             rentDaysInput.addEventListener('input', function () {
                 var numberOfDays = parseInt(rentDaysInput.value);
-                var totalPrice = isNaN(numberOfDays) ? 0 : numberOfDays * pricePerDay;
+                var totalPrice = (isNaN(numberOfDays) || (numberOfDays < 0) ) ? 0 : numberOfDays * pricePerDay;
                 totalPriceDisplay.textContent = '$' + totalPrice.toFixed(2);
                 totalPriceInput.value = totalPrice.toFixed(2);
             });
