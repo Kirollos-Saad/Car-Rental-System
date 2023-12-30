@@ -28,7 +28,7 @@ if (isset($_SESSION['user_email']) && isset($_SESSION['user_name'])) {
 
     <section class="centered-section">
        <a href="Search Car/search_car.php" class="button">Rent a Car</a> 
-        <a href="account.php" class="button">Currently Rented</a>
+        <a href="Current Rented/currentRented.php" class="button">Currently Rented</a>
         <a href="account.php" class="button">Rental History</a>
     </section>
 </main>
