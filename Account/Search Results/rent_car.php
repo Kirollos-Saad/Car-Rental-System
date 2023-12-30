@@ -1,25 +1,20 @@
 <?php
 
-session_start(); // Start the session
-include '../../db_connect.php'; // Include the database connection file
+session_start(); 
+include '../../db_connect.php'; 
 
 if (isset($_GET['plate_number'])) {
-
     $plateNumber = $_GET['plate_number'];
-
     $sql = "SELECT * FROM Car where plate_number = $plateNumber";
     $car = $conn->query($sql)->fetch_assoc();
     $is_automatic = $car['is_automatic']; // Assuming this variable holds your value
-
     // Set $transmission_type based on the value of $is_automatic
     if ($is_automatic) {
         $transmission_type = "Automatic";
     } else {
         $transmission_type = "Manual";
     }
-
     $office_id = $car['office_id'];
-
     $sql = "SELECT country, city FROM Office where office_id = $office_id";
     $office_location = $conn->query($sql)->fetch_assoc();
 
@@ -29,11 +24,7 @@ if (isset($_GET['plate_number'])) {
 }
 ?>
 
-
-
 <!DOCTYPE html>
-
-
 <html lang="en">
 
 <head>
@@ -63,6 +54,7 @@ if (isset($_GET['plate_number'])) {
                 var numberOfDays = parseInt(rentDaysInput.value);
                 if (numberOfDays <= 0 || isNaN(numberOfDays)) {
                     alert("Please Enter a Non-zero Number of Days");
+                    location.reload();
                     return;
                 }
                 if (!cardDetails) {

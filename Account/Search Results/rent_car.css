@@ -18,7 +18,6 @@ main {
     padding: 20px;
 }
 
-
 .car-info {
     flex: 1; 
     padding-right: 20px; 
@@ -37,19 +36,26 @@ main {
     padding: 20px;
     text-align: left; 
     margin: 20px; 
-    max-width: 600px; 
+    max-width: 300px; /* Reduced from 600px to 400px */
     width: calc(100% - 40px); 
+    transition: transform 0.3s ease-in-out; 
+}
+.car-card:hover {
+    transform: scale(1.05); 
 }
 
 .main-container {
     display: flex;
 }
+
 .car-card img {
     width: 100%;
     height: 200px;
     object-fit: cover;
     border-radius: 10px;
+    
 }
+
 footer {
     flex-shrink: 0;
     background-color: #333;
@@ -58,19 +64,12 @@ footer {
     text-align: center;
 }
 
-
 .image-container {
-    max-width: 400px; /* Set a maximum width for the image container */
+    max-width: 350px; /* Reduced from 400px to 300px */
 }
 
 .image-container img {
-    width: 100%; /* Make the image fill its container */
-    height: auto; /* Maintain aspect ratio */
+    width: 100%; 
+    height: auto; 
     border-radius: 10px;
 }
-
-
-
-
-
-

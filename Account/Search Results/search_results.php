@@ -1,7 +1,7 @@
 <?php
 
-session_start(); // Start the session
-include '../../db_connect.php'; // Include the database connection file
+session_start(); 
+include '../../db_connect.php'; 
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $manual_auto = $_GET["Manual/Auto"];
@@ -11,7 +11,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $maxPrice = $_GET['max-price'];
 
 
-    // Check each parameter and add conditions accordingly
     if (empty($colors)) {
         $conditions[] = "color = color";
     } else {
@@ -38,7 +37,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $conditions[] = "price_per_day <= $maxPrice";
     }
 
-    // Construct the WHERE clause
     $whereClause = '';
     if (!empty($conditions)) {
         $whereClause = 'WHERE ' . implode(' AND ', $conditions);
@@ -55,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Display Results</title>
+    <title>Search Results</title>
     <link rel="stylesheet" href="search_results.css">
 </head>
 <body>
@@ -64,8 +62,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         <h1>Car Rental System</h1>
         <h2>Search Results:</h2>
     </header>
-
-
 
 <body>
     <div id="carDetails"></div>

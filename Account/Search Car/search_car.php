@@ -11,6 +11,17 @@ include '../../db_connect.php'; // Include the database connection file
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="search_car.css">
     <title>Rent a Car</title>
+    <script>
+        function validateForm() {
+            var maxPrice = document.getElementById("max-price").value;
+            if (maxPrice < 0) {
+                alert("Max price must be a positive number");
+                location.reload(); 
+                return false;
+            }
+            return true;
+        }
+    </script>
 </head>
 
 <body>
@@ -19,20 +30,18 @@ include '../../db_connect.php'; // Include the database connection file
             <h1>Please Choose Car Specifications</h1>
         </header>
 
-        <form action="../Search Results/search_results.php" method="GET">
-        <label for="car-transmission">Transmission Type:</label>
-<select id="car-transmission" name="Manual/Auto" >
-    <option value="">Any</option>
-    <option value="manual">Manual</option>
-    <option value="auto">Automatic</option>
-</select>
-            
+        <form action="../Search Results/search_results.php" method="GET" onsubmit="return validateForm()">
+            <label for="car-transmission">Transmission Type:</label>
+            <select id="car-transmission" name="Manual/Auto" >
+                <option value="">Any</option>
+                <option value="manual">Manual</option>
+                <option value="auto">Automatic</option>
+            </select>
 
             <label for="colors">Available Colors:</label>
             <select id="colors" name="colors">
                 <option value="">Any Color</option>
                 <?php
-
                 $sql = "SELECT distinct color FROM Car";
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
@@ -65,12 +74,10 @@ include '../../db_connect.php'; // Include the database connection file
                 ?>
             </select>
 
-            <label for="years">Produced Afer:</label>
+            <label for="years">Produced After:</label>
             <select id="years" name="years">
                 <option value="">Any Year</option>
                 <?php
-                // Your database connection code here (assume $conn is your database connection)
-                
                 $sql = "SELECT DISTINCT year_produced FROM Car ORDER BY year_produced";
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
@@ -84,15 +91,13 @@ include '../../db_connect.php'; // Include the database connection file
                 }
                 ?>
             </select>
+
             <label for="max-price">Max Price per Day:</label>
             <input type="number" id="max-price" name="max-price" placeholder="Enter maximum price">
             <br>
             <br>
 
             <button type="submit">Search</button>
-
-
-
         </form>
     </main>
     <footer>

@@ -22,6 +22,7 @@ if (isset($_SESSION['user_email']) && isset($_SESSION['user_name'])) {
 <body>
  <main>
     <header>
+        <h1>Car Rental System</h1>
         <h1>My Account,</h1>
         <h2><?php echo $userName; ?></h2>
     </header>
