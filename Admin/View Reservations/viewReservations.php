@@ -40,7 +40,8 @@ if ($result->num_rows > 0) {
 
 
 $reserved_only = [];
-//case 3:
+//case 3: 
+//get reserve date only from reservation history and current renting to make the union as they are different columns.
 $sql = "SELECT car.*, customer.*, reserve_date  FROM (reservation_history natural join customer) natural join car where reserve_date <= $end_date 
         and return_date > $end_date
         UNION
