@@ -21,30 +21,59 @@ main {
     width: 100%;
 }
 
+.input_date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f4f4f4; 
+    color: #333; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+}
+
+#date, #searchBtn {
+    margin: 10px 0; 
+    font-size: 16px; 
+}
+
+#searchBtn {
+    background-color: #333;
+    color: #fff; 
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#searchBtn:hover {
+    background-color:#0056b3;
+}
+
 .car-status-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* This will create 3 equal columns */
-    gap: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .cars-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .car-card {
-    width: 200px; /* Set the width of the card */
-    height: 300px; /* Set the height of the card */
+    width: 200px; 
+    height: 300px; 
     border: 1px solid #ccc;
     border-radius: 10px;
     padding: 20px;
     text-align: center;
     transition: transform 0.3s ease-in-out;
-    display: flex; /* Added to center the content vertically */
-    flex-direction: column; /* Added to align the content vertically */
-    justify-content: center; /* Added to center the content vertically */
-    align-items: center; /* Added to center the content horizontally */
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    margin-bottom: 20px; 
 }
 
 .car-card:hover {
@@ -56,7 +85,7 @@ main {
     height: 200px;
     object-fit: cover;
     border-radius: 10px;
-    margin-bottom: 10px; /* Added to create some space between the image and the text */
+    margin-bottom: 10px; 
 }
 
 footer {
