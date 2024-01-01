@@ -31,8 +31,8 @@ if ($result->num_rows > 0) {
 //Rented Cars
 $rented = [];
 $sql = "SELECT Car.* FROM (Reservation_History natural join Car) WHERE $date >= reserve_date and  $date <= return_date 
-            UNION
-            SELECT Car.* FROM (Current_Renting natural join Car) WHERE $date >= reserve_date ";
+        UNION
+        SELECT Car.* FROM (Current_Renting natural join Car) WHERE $date >= reserve_date ";
 
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
@@ -46,7 +46,9 @@ $available = [];
 $sql = "SELECT * FROM Car where plate_number not IN 
     (
         SELECT plate_number FROM Car WHERE date_deleted IS NOT NULL AND $date >= date_deleted
+
         UNION 
+
         SELECT plate_number FROM (Reservation_History natural join Car) WHERE $date >= reserve_date and  $date <= return_date 
         UNION
         SELECT plate_number FROM (Current_Renting natural join Car) WHERE $date >= reserve_date 

@@ -4,6 +4,38 @@ include '../../db_connect.php'; // Include the database connection file
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $platenumber = $_POST['car-plate-number'];
+
+    //Check Car is not rented
+    $sql = "SELECT * from Current_Renting where plate_number = $platenumber";
+    $result1 = $conn->query($sql);
+
+    if($result1->num_rows != 0){
+        echo '<script type="text/javascript">
+        var userResponse = confirm("Cannot Delete a Currently Rented Car !");
+            window.location.href = "deleteCar.php";
+        
+      </script>';
+      exit;
+    }
+    
+
+    //Check Car is not already deleted
+    $sql = "SELECT * from Car where date_deleted IS NOT NULL and plate_number = $platenumber";
+    $result2 = $conn->query($sql);
+
+    if($result2->num_rows != 0){
+        echo '<script type="text/javascript">
+        var userResponse = confirm("Cannot Delete an already Deleted Car !");
+            window.location.href = "deleteCar.php";
+        
+      </script>';
+      exit;
+
+    }
+    
+
+
+
     $sql = "UPDATE car SET car_status = 'out of service' , date_deleted = CURRENT_TIMESTAMP  where (plate_number = '$platenumber' and car_status != 'out of service');";
     if($conn->query($sql) === TRUE)
     {
@@ -16,7 +48,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             
           </script>';
         }
-
 
         else
         {
