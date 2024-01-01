@@ -62,18 +62,18 @@ main {
 }
 
 .car-card {
-    width: 200px; /* Set the width of the card */
-    height: 300px; /* Set the height of the card */
+    width: 200px; 
+    height: 300px; 
     border: 1px solid #ccc;
     border-radius: 10px;
     padding: 20px;
     text-align: center;
     transition: transform 0.3s ease-in-out;
-    display: flex; /* Added to center the content vertically */
-    flex-direction: column; /* Added to align the content vertically */
-    justify-content: center; /* Added to center the content vertically */
-    align-items: center; /* Added to center the content horizontally */
-    margin-bottom: 20px; /* Added to create some space between the cards */
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    margin-bottom: 20px; 
 }
 
 .car-card:hover {
@@ -85,7 +85,7 @@ main {
     height: 200px;
     object-fit: cover;
     border-radius: 10px;
-    margin-bottom: 10px; /* Added to create some space between the image and the text */
+    margin-bottom: 10px; 
 }
 
 footer {
