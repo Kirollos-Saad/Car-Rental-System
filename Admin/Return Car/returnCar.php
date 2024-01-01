@@ -24,11 +24,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         else
         {   
             $row = $result->fetch_assoc();
-            $reservedate = $row['reserve_date'];
-            $pickupdate = $row['pick_up_date'];
+            $reservedate = '"' . $row['reserve_date'] . '"';
+            $pickupdate = '"' . $row['pick_up_date'] . '"';
             $customerid = $row['customer_id'];
             date_default_timezone_set("Africa/Cairo");
-            $returndate = date("Y-m-d");
+            $returndate =  '"' . date("Y-m-d") . '"';
+            echo  $reservedate;
+            echo $pickupdate;
+            echo $returndate;
             $sql2 = "DELETE FROM Current_Renting WHERE plate_number = '$platenumber';";
             $query1 = "INSERT INTO Reservation_History VALUES($platenumber , $customerid , $reservedate , $returndate , $pickupdate );";
             $query2 = "UPDATE car SET car_status = 'active' where (plate_number = '$platenumber'); ";
