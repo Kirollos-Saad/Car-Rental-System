@@ -33,7 +33,7 @@ $sql = "
 */ 
 //Get Out of Service Cars
 $out_of_service = [];
-$sql = "SELECT * FROM Car WHERE date_deleted IS NOT NULL AND $date >= date_deleted"; //Switch to query below it once date added gets added
+$sql = "SELECT * FROM Car WHERE  $date < date_added or (date_deleted IS NOT NULL AND $date >= date_deleted)"; //Switch to query below it once date added gets added
 //$sql = "SELECT * FROM Car WHERE (date_deleted IS NOT NULL AND $date >= date_deleted) or $date < date_added";
 
 $result = $conn->query($sql);
@@ -66,7 +66,7 @@ $available = [];
 $sql = "SELECT * FROM Car where plate_number not IN 
     (
         /*Check not out of service*/
-        SELECT plate_number FROM Car WHERE date_deleted IS NOT NULL AND $date >= date_deleted 
+        SELECT plate_number FROM Car WHERE  $date < date_added or (date_deleted IS NOT NULL AND $date >= date_deleted)
 
         UNION 
 
