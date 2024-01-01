@@ -12,15 +12,11 @@
     <main>
         <header>
             <h1>Car Rental System</h1>
-            <h2>All Cars Status</h2>
+            <h2>Car Status</h2>
         </header>
         <div class="input_date">
-            <label for="start_date">Start Date:</label>
-            <input type="date" id="start_date" name="start_date" required>
-
-            <label for="end_date">End Date:</label>
-            <input type="date" id="end_date" name="end_date" required>
-
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required>
             <button id="searchBtn" type="button">Search</button>
         </div>
     </main>
@@ -33,20 +29,14 @@
             var searchBtn = document.getElementById('searchBtn');
 
             searchBtn.addEventListener('click', function () {
-                var startDate = document.getElementById('start_date').value;
-                var endDate = document.getElementById('end_date').value;
+                var date = document.getElementById('date').value;
 
-                if (!startDate || !endDate) {
-                    alert('Please provide both Start Date and End Date');
+                if (!date) {
+                    alert('Please provide a date');
                     return;
                 }
 
-                if (new Date(endDate) <= new Date(startDate)) {
-                    alert('End Date must be after Start Date');
-                    return;
-                }
-
-                window.location.href = 'viewStatus.php?start_date=' + startDate + '&end_date=' + endDate;
+                window.location.href = 'viewStatus.php?date=' + date;
             });
         });
     </script>
