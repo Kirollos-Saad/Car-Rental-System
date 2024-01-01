@@ -38,8 +38,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 window.location.href = "addCar.php";
               </script>';
     }
-    $sql = "INSERT INTO Car (plate_number, color, is_automatic, price_per_day, model_name, manufacturer,year_produced,car_status,date_deleted,office_id,image_path)
-     VALUES                 ('$platenumber', '$color', '$is_automatic', '$price_per_day', '$model_name', '$manufacturer','$year_produced','$status',NULL,'$office_id','$image_path')";
+    $sql = "INSERT INTO Car (plate_number, color, is_automatic, price_per_day, model_name, manufacturer,year_produced,car_status,date_deleted,office_id,image_path, date_added)
+     VALUES ('$platenumber', '$color', '$is_automatic', '$price_per_day', '$model_name', '$manufacturer','$year_produced','$status',NULL,'$office_id','$image_path', NOW())";
     if ($conn->query($sql) === TRUE) {
         //echo "The car is inserted successfully.";
        header("Location: ../Available Cars/available.php");

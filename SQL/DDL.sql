@@ -17,6 +17,7 @@ create table Car(
     year_produced year not null,
     car_status varchar(255) not null CHECK (car_status IN ('Active', 'Out of Service', 'Rented')),
     date_deleted timestamp,
+    date_added timestamp,
     office_id int not null,
     image_path varchar(255) not null
 );
