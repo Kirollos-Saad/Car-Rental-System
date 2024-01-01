@@ -1,6 +1,6 @@
 <?php
-session_start(); // Start the session
-include '../../db_connect.php'; // Include the database connection file
+session_start(); 
+include '../../db_connect.php'; 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $platenumber = $_POST['car-plate-number'];
