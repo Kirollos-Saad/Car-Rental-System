@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Insert into Current_Renting table
     $sql = "INSERT INTO Current_Renting (plate_number, customer_id, reserve_date, pick_up_date)
-     VALUES ('$plate_number', '$customer_id', '$currentTimestamp', '$currentTimestamp')";
+     VALUES ('$plate_number', '$customer_id', '$currentTimestamp', null)";
     $conn->query($sql);
 
     echo "<script type='text/javascript'>alert('Payment was successful!'); window.location.href = '../account.php';</script>";

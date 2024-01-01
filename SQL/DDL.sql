@@ -55,7 +55,7 @@ create table Current_Renting(
     plate_number int,
     customer_id int,
     reserve_date date not null,
-    pick_up_date date not null,
+    pick_up_date date,
     primary key(plate_number, customer_id),
     foreign key (plate_number) references Car(plate_number),
     foreign key (customer_id) references Customer(customer_id)
