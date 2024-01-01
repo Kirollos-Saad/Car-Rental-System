@@ -1,13 +1,16 @@
 <?php
-include '../../db_connect.php'; // Include the database connection file
+include '../../db_connect.php';
 
-// Fetch all cars regarding of their status
+$start_date = '"' . $_GET['start_date'] . '"';
+$end_date = '"' . $_GET['end_date'] . '"';
+
 $payments = [];
-$sql = "SELECT * FROM payment ";
+
+$sql = "SELECT * FROM Payment where payment_date >= $start_date and  payment_date <= $end_date";
+
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
-    // Output data of each row
-    while($row = $result->fetch_assoc()) {
+    while ($row = $result->fetch_assoc()) {
         $payments[] = $row;
     }
 }
