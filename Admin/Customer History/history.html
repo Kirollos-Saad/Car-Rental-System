@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Rental History</title>
+    <link rel="stylesheet" href="history.css">
+</head>
+<body>
+    <header>
+        <h1>Car Rental System</h1>
+        <h2>Rental History</h2>
+    </header>
+
+    <main>
+        <form action="history.php" method="get" class="input_date">
+            <div class="form-group">
+                <label for="customer-id">Enter Customer ID:</label>
+                <input type="text" id="customer-id" name="customer-id" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Show History</button>
+            </div>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Car Rental System</p>
+    </footer>
+</body>
+</html>
