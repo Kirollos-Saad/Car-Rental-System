@@ -16,7 +16,21 @@ if (isset($_SESSION['admin_email'])) {
 }
 
 $date = '"' . $_GET['date'] . '"';
-
+/*
+old query
+$sql = "
+        SELECT Car.*, 
+        CASE
+            WHEN (Current_Renting.plate_number IS NOT NULL AND ? BETWEEN Current_Renting.reserve_date AND IFNULL(Current_Renting.pick_up_date, ?))
+            OR (Current_Renting.plate_number IS NULL AND Reservation_History.plate_number IS NOT NULL AND ? BETWEEN Reservation_History.reserve_date AND Reservation_History.return_date) THEN 'Rented'
+            WHEN Car.car_status = 'Out of Service' THEN 'Out of Service'
+            ELSE 'Active'
+        END AS rental_status
+        FROM Car 
+        LEFT JOIN Current_Renting ON Car.plate_number = Current_Renting.plate_number
+        LEFT JOIN Reservation_History ON Car.plate_number = Reservation_History.plate_number
+    ";
+*/ 
 //Get Out of Service Cars
 $out_of_service = [];
 $sql = "SELECT * FROM Car WHERE date_deleted IS NOT NULL AND $date >= date_deleted"; //Switch to query below it once date added gets added
