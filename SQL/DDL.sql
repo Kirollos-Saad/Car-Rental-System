@@ -4,9 +4,7 @@
 create database car_rental_system;
 use car_rental_system;
 
-/*
-Consider moving date deleted into a seperate relation to avoid null attributes
-*/
+
 create table Car(
     plate_number int primary key,
     color varchar(255) not null,

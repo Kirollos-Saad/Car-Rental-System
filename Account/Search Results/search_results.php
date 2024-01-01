@@ -9,6 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $manufacturers = $_GET['manufacturers'];
     $year_produced = $_GET['years'];
     $maxPrice = $_GET['max-price'];
+    $office_id = $_GET['car-office-loc'];
 
 
     if (empty($colors)) {
@@ -37,12 +38,17 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $conditions[] = "price_per_day <= $maxPrice";
     }
 
+    if(!empty($office_id)){
+        $conditions[] = "$office_id = office_id";
+    }
+
+
     $whereClause = '';
     if (!empty($conditions)) {
         $whereClause = 'WHERE ' . implode(' AND ', $conditions);
     }
 
-    $sql = "SELECT * FROM Car $whereClause AND car_status = 'Active'";
+    $sql = "SELECT * FROM (Car natural join Office) $whereClause AND car_status = 'Active'";
     $cars = $conn->query($sql);
 
 }
@@ -87,6 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                 <p><strong>Color:</strong> <span style="background-color: <?php echo $car['color']; ?>; display: inline-block; width: 20px; height: 20px;"></span> <span><?php echo $car['color']; ?></span></p>
                 <p><strong>Transmission:</strong> <span><?php echo $car['is_automatic'] ? 'Automatic' : 'Manual'; ?></span></p>
                 <p><strong>Price per day:</strong> <span><?php echo '$' . $car['price_per_day']; ?></span></p>
+                <p><strong>Location:</strong> <span><?php echo $car['country']. ", ", $car['city']; ?></span></p>
             </a>
         </div>
     <?php endforeach; ?>

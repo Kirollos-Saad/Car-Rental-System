@@ -1,6 +1,19 @@
 <?php
 session_start(); // Start the session
 include '../../db_connect.php'; // Include the database connection file
+
+// Fetch office Locations
+$office_locations = [];
+$sql = "SELECT * FROM Office";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+    // Output data of each row
+    while($row = $result->fetch_assoc()) {
+        $office_locations[] = $row;
+    }
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +29,7 @@ include '../../db_connect.php'; // Include the database connection file
             var maxPrice = document.getElementById("max-price").value;
             if (maxPrice < 0) {
                 alert("Max price must be a positive number");
-                location.reload(); 
+                location.reload();
                 return false;
             }
             return true;
@@ -32,7 +45,7 @@ include '../../db_connect.php'; // Include the database connection file
 
         <form action="../Search Results/search_results.php" method="GET" onsubmit="return validateForm()">
             <label for="car-transmission">Transmission Type:</label>
-            <select id="car-transmission" name="Manual/Auto" >
+            <select id="car-transmission" name="Manual/Auto">
                 <option value="">Any</option>
                 <option value="manual">Manual</option>
                 <option value="auto">Automatic</option>
@@ -94,6 +107,17 @@ include '../../db_connect.php'; // Include the database connection file
 
             <label for="max-price">Max Price per Day:</label>
             <input type="number" id="max-price" name="max-price" placeholder="Enter maximum price">
+            <label for="car-office-loc">Office Location:</label>
+            <select id="car-office-loc" name="car-office-loc">
+                <option value="">Any Location</option>
+                <?php
+                foreach ($office_locations as $office_location) {
+                    echo "<option value='" . $office_location["office_id"] . "'>" ."Office Number " 
+                    .$office_location["office_id"].": " .$office_location["country"].", " .$office_location["city"] . "</option>";
+                }
+                ?>
+            </select>
+
             <br>
             <br>
 
