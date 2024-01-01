@@ -16,4 +16,4 @@ ADD COLUMN date_added TIMESTAMP NULL;
 
 /* Set date_added for all cars in the system to be the current timestamp */
 UPDATE Car
-SET date_added = NOW();
+SET date_added = "2023-01-01 23:09:17";
