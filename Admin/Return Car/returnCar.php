@@ -20,47 +20,56 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         else
         {
-            $sql1 = "SELECT * FROM Current_Renting WHERE plate_number = '$platenumber';";
-            $result = $conn->query($sql1);
+            $carRow = $carExistResult->fetch_assoc();
+            if($carRow['car_status'] == 'out of service') {
+                echo '<script type="text/javascript">
+                var userResponse = confirm("This car is currently out of service!");
+                    window.location.href = "returnCar.php";
+              
+              </script>';
+            } else {
+                $sql1 = "SELECT * FROM Current_Renting WHERE plate_number = '$platenumber';";
+                $result = $conn->query($sql1);
 
-            if($result !== FALSE)
-            {
-                //if the plate number does not exist in the DB.
-                if($conn->affected_rows == 0)
+                if($result !== FALSE)
                 {
-                    echo '<script type="text/javascript">
-                    var userResponse = confirm("This car is not currently rented, it is active!");
-                        window.location.href = "returnCar.php";
-                  
-                  </script>';
-                }
-                else
-                {   
-                    $row = $result->fetch_assoc();
-                    $reservedate = $row['reserve_date'];
-                    $pickupdate = $row['pick_up_date'];
-                    $customerid = $row['customer_id'];
-                    date_default_timezone_set("Africa/Cairo");
-                    $returndate = date("Y-m-d");
-                    $sql2 = "DELETE FROM Current_Renting WHERE plate_number = '$platenumber';";
-                    $query1 = "INSERT INTO Reservation_History VALUES($platenumber , $customerid , $reservedate , $returndate , $pickupdate );";
-                    $query2 = "UPDATE car SET car_status = 'active' where (plate_number = '$platenumber'); ";
-                    if($conn->query($sql2) == TRUE && $conn->query($query1) == TRUE && $conn->query($query2) == TRUE)
+                    //if the plate number does not exist in the DB.
+                    if($conn->affected_rows == 0)
                     {
-                    echo '<script type="text/javascript">
-                    var userResponse = confirm("The car is successfully returned!");
-                        window.location.href = "returnCar.php";
-                  
-                  </script>'; 
+                        echo '<script type="text/javascript">
+                        var userResponse = confirm("This car is not currently rented, it is active!");
+                            window.location.href = "returnCar.php";
+                      
+                      </script>';
                     }
-                    else{
-                        echo "Error in delete or insert query!";
+                    else
+                    {   
+                        $row = $result->fetch_assoc();
+                        $reservedate = $row['reserve_date'];
+                        $pickupdate = $row['pick_up_date'];
+                        $customerid = $row['customer_id'];
+                        date_default_timezone_set("Africa/Cairo");
+                        $returndate = date("Y-m-d");
+                        $sql2 = "DELETE FROM Current_Renting WHERE plate_number = '$platenumber';";
+                        $query1 = "INSERT INTO Reservation_History VALUES($platenumber , $customerid , $reservedate , $returndate , $pickupdate );";
+                        $query2 = "UPDATE car SET car_status = 'active' where (plate_number = '$platenumber'); ";
+                        if($conn->query($sql2) == TRUE && $conn->query($query1) == TRUE && $conn->query($query2) == TRUE)
+                        {
+                        echo '<script type="text/javascript">
+                        var userResponse = confirm("The car is successfully returned!");
+                            window.location.href = "returnCar.php";
+                      
+                      </script>'; 
+                        }
+                        else{
+                            echo "Error in delete or insert query!";
+                        }
                     }
                 }
-            }
-            else {
-                echo "The car is not deleted!";
-                echo "Error: " . $sql1 . "<br>" . $conn->error;
+                else {
+                    echo "The car is not deleted!";
+                    echo "Error: " . $sql1 . "<br>" . $conn->error;
+                }
             }
         }
     }
