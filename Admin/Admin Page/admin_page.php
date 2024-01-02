@@ -43,6 +43,7 @@ if (isset($_SESSION['admin_email']) && isset($_SESSION['admin_office'])) {
         <a href="../view Payments/viewPayments.html" class="button">View Payments</a>
         <a href="../view Status/viewStatus.html" class="button">View Cars Status</a>
         <a href="../Return Car/returnCar.php" class="button">Return Car</a>
+        <a href="../Pick up Car/pickupCar.php" class="button">Pick up Car</a>
     </section>
 </main>
     <footer>
