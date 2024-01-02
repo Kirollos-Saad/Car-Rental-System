@@ -25,13 +25,13 @@ insert into customer values(5,'karpov@gmail.com','+7545545454','a30636566360aa3f
 
 
 /*Add Some Cars*/
-insert into car values(1,'white','1',90,'Benz CLA class','Mercedes','2015','active',NULL,'2023-04-05',4,'https://upload.wikimedia.org/wikipedia/commons/7/71/Mercedes-Benz_C118_IMG_2673.jpg');
-insert into car values(2,'blue','1',100,'Benz CLA class','Mercedes','2017','active',NULL,'2023-10-05',4,'https://www.topgear.com/sites/default/files/2023/10/Medium-44235-CLA250e.jpg');
-insert into car values(3,'silver','1',50,'Picanto','Kia','2023','active',NULL,'2023-10-05',2,'https://images.carexpert.com.au/crop/1200/630/app/uploads/2023/01/Kia-Picanto-GT_HERO-16x9-2.jpg');
-insert into car values(4,'red','0',30,'Alto K10','Suzuki','2018','active',NULL,'2024-01-01',1,'https://www.arabsauto.com/wp-content/uploads/2022/08/2023-Suzuki-Alto-K10-ArabsAuto-9.jpg');
-insert into car values(5,'white','0',35,'Lancer','Mitsubishi','2010','active',NULL,'2024-01-02',1,'https://carsguide-res.cloudinary.com/image/upload/f_auto%2Cfl_lossy%2Cq_auto%2Ct_default/v1/editorial/mitsubishi-lancer-used-07-1001x565-%281%29.jpg');
-insert into car values(6,'red','1',80,'Dzire','Suzuki','2021','active',NULL,'2023-03-21',3,'https://imgcdn.zigwheels.ph/large/gallery/color/29/257/suzuki-swift-dzire-color-168959.jpg');
-insert into car values(7,'silver','1',120,'Benz A class','Mercedes','2017','active',NULL,'2023-05-28',7,'https://www.mercedes-benz.com.eg/content/dam/hq/passengercars/cars/a-class/saloon-v177-pi/mercedes-benz-a-class-v177-design-contentgallery-front-01-2730x1536-07-2018.jpg');
+insert into car values(1,'white','1',90,'Benz CLA class','Mercedes','2015','active',NULL,'2022-04-05',4,'https://upload.wikimedia.org/wikipedia/commons/7/71/Mercedes-Benz_C118_IMG_2673.jpg');
+insert into car values(2,'blue','1',100,'Benz CLA class','Mercedes','2017','active',NULL,'2022-10-05',4,'https://www.topgear.com/sites/default/files/2023/10/Medium-44235-CLA250e.jpg');
+insert into car values(3,'silver','1',50,'Picanto','Kia','2023','active',NULL,'2022-10-05',2,'https://images.carexpert.com.au/crop/1200/630/app/uploads/2023/01/Kia-Picanto-GT_HERO-16x9-2.jpg');
+insert into car values(4,'red','0',30,'Alto K10','Suzuki','2018','active',NULL,'2022-01-01',1,'https://www.arabsauto.com/wp-content/uploads/2022/08/2023-Suzuki-Alto-K10-ArabsAuto-9.jpg');
+insert into car values(5,'white','0',35,'Lancer','Mitsubishi','2010','active',NULL,'2022-01-02',1,'https://carsguide-res.cloudinary.com/image/upload/f_auto%2Cfl_lossy%2Cq_auto%2Ct_default/v1/editorial/mitsubishi-lancer-used-07-1001x565-%281%29.jpg');
+insert into car values(6,'red','1',80,'Dzire','Suzuki','2021','active',NULL,'2022-03-21',3,'https://imgcdn.zigwheels.ph/large/gallery/color/29/257/suzuki-swift-dzire-color-168959.jpg');
+insert into car values(7,'silver','1',120,'Benz A class','Mercedes','2017','active',NULL,'2022-05-28',7,'https://www.mercedes-benz.com.eg/content/dam/hq/passengercars/cars/a-class/saloon-v177-pi/mercedes-benz-a-class-v177-design-contentgallery-front-01-2730x1536-07-2018.jpg');
 
 
 
