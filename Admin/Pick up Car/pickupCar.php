@@ -2,7 +2,6 @@
 session_start(); 
 include '../../db_connect.php'; 
 
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $platenumber = $_POST['car-plate-number'];
 
@@ -29,22 +28,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               
               </script>';
             } else {
-                $sql1 = "SELECT * FROM Current_Renting WHERE plate_number = '$platenumber';";
+                $sql1 = "SELECT * FROM Current_Renting WHERE plate_number = '$platenumber' and pick_up_date is NULL;";
                 $result = $conn->query($sql1);
 
                 if($result !== FALSE)
                 {
-                    //if the plate number does not exist in the DB.
+                    //if the plate number does not exist in the DB or pickup date is already set.
                     if($conn->affected_rows == 0)
                     {
                         echo '<script type="text/javascript">
-                        var userResponse = confirm("This car is not currently rented, it is active!");
+                        var userResponse = confirm("Pickup already exists for this car or the car is not currently rented!");
                             window.location.href = "pickupCar.php";
                       
                       </script>';
                     }
                     else
-                    {   date_default_timezone_set("Africa/Cairo");
+                    {   
+                        date_default_timezone_set("Africa/Cairo");
                         $currentDate = '"' .date("Y-m-d"). '"';
                         $sql2 = "UPDATE Current_Renting SET pick_up_date = $currentDate where (plate_number = '$platenumber' and pick_up_date is NULL);";
                         if($conn->query($sql2) !== FALSE)
